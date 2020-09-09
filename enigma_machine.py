@@ -163,7 +163,7 @@ class EnigmaMachine:
             while connection != ".":
                 self.plugboard.make_connection(connection[0], connection[1])
                 connection = input("Make a connection(ab) or enter \".\" to stop: ").upper()
-        response = input("Enter letters one by one to encrypt or enter \".\" to stop: ").upper().replace(" ", "")
+        response = input("Enter text to encrypt/decrypt \".\" to stop: ").upper().replace(" ", "")
         while response != ".":
             for char in response:
                 if char.isalpha():
@@ -181,8 +181,8 @@ class EnigmaMachine:
                     char = rotor_b.getr(char)
                     char = rotor_a.getr(char)
                     char = self.plugboard.getr(char)
-                    print(char)
-            response = input("Enter letters one by one to encrypt or enter \".\" to stop: ").upper()
+                    print(char, end='')
+            response = input("\nEnter text to encrypt/decrypt \".\" to stop: ").upper()
         
     def print_rotors(self):
         for i in range(0, len(self.rotor_set)):
@@ -211,4 +211,5 @@ class EnigmaMachine:
 def main():
     enigma_machine = EnigmaMachine()
         
-main()
+if __name__ == '__main__':
+    main()
